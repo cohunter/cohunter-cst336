@@ -1,0 +1,4 @@
+[05-Feb-2018 23:02:11 UTC] PHP Parse error:  syntax error, unexpected 'i' (T_STRING), expecting ';' in /home/ubuntu/workspace/cohunter-cst336/labs/lab2/index.php on line 11
+[05-Feb-2018 23:03:20 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ubuntu/workspace/cohunter-cst336/labs/lab2/index.php on line 16
+[05-Feb-2018 23:29:38 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' in /home/ubuntu/workspace/cohunter-cst336/labs/lab2/index.php on line 12
+[05-Feb-2018 23:29:46 UTC] PHP Parse error:  syntax error, unexpected 'in' (T_STRING), expecting ';' in /home/ubuntu/workspace/cohunter-cst336/labs/lab2/index.php on line 12
