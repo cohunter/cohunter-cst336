@@ -25,6 +25,7 @@ require_once('database.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
+        var is_admin = <?php if ( $_SESSION['is_admin'] ) { echo "true"; } else { echo "false"; } ?>
         /* global $ */
         $(document).ready(function() {
             $('#submitBtn').on('click', function(e) {
@@ -54,7 +55,11 @@ require_once('database.php');
                     $.each(data, function(i, image) {
                         console.log(image);
                         
-                        toAppend += '<div class="col-md-5"><img data-i=' + i + ' class="ref" src="' + image['url'] + '"></div>';
+                        toAppend += '<div class="col-md-5"><img data-i=' + i + ' class="ref" src="' + image['url'] + '">';
+                        if ( is_admin ) {
+                            toAppend += '<a class="btn btn-primary" href="delete.php?id=' + image['image_id'] + '">Delete this record</a>';
+                        }
+                        toAppend += '</div>';
                         if ( i % 2 == 1 ) {
                             toAppend += '</div><div class="row">';
                         }

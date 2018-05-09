@@ -7,7 +7,7 @@ CREATE TABLE users (
   `username` varchar(255) NOT NULL,
   `password` varchar(128) NOT NULL,
   `first_access` TIMESTAMP DEFAULT NOW(),
-  `last_access` TIMESTAMP DEFAULT 0,
+  `last_access` TIMESTAMP DEFAULT NOW(),
   `is_admin` BOOL DEFAULT 0,
   primary key(`id`)
   );
@@ -17,7 +17,7 @@ CREATE TABLE images (
   `user_id` int,
   `added` TIMESTAMP DEFAULT NOW(),
   `url` VARCHAR(1024),
-  FOREIGN KEY (`user_id`) REFERENCES users(`id`),
+  FOREIGN KEY (`user_id`) REFERENCES users(`id`) ON DELETE CASCADE,
   PRIMARY KEY(`image_id`),
   INDEX (`image_id`, `user_id`)
   );
@@ -25,11 +25,12 @@ CREATE TABLE images (
 CREATE TABLE images_tags (
   `image_id` int,
   `tag` VARCHAR(255),
-  FOREIGN KEY (`image_id`) REFERENCES images(`image_id`)
+  FOREIGN KEY (`image_id`) REFERENCES images(`image_id`) ON DELETE CASCADE
   );
   
 INSERT INTO users (username, password) VALUES ('sampleuser', '$2y$10$i4Lh8QIqYiYmm0SFSGmpW.UqTuv.N0aD3BzcL7rkNpqZzBscPSqyO');
-INSERT INTO users (username, password, is_admin) VALUES ('sampleadmin', '$2y$10$EpNc4VHcUr3Saz0FDgYfZONW2CcVSlUWSE7P.fvO71BS26oOVjZzW', 1);
+INSERT INTO users (username, password, is_admin) VALUES ('sampleadmin', '$2y$10$EpNc4VHcUr3Saz0FDgYfZONW2CcVSlUWSE7P.fvO71BS26oOVjZzW', 1),
+	('admin', '$2y$10$YrA3BzJz8MSqFgdcMx2le.ofKduDnbTjexfnrqcXzoWBdRLqSHYhi', 1);
 INSERT INTO images (user_id, url) VALUES (1, 'https://i.imgur.com/rMoibS7.jpg'), (1, 'https://i.redd.it/pak83csz0uw01.jpg'),
 	(1, 'https://i.redd.it/oad5yq3qmuw01.jpg'), (1, 'https://i.redd.it/8o32rslbiuw01.jpg'), (1, 'https://i.redd.it/a5mn0an79rw01.jpg'),
 	(1, 'https://i.redd.it/s4ftjf4n8pw01.jpg'), (1, 'https://i.redd.it/zflxsbam5ow01.jpg'), (1, 'https://i.redd.it/s3kbu6qq7pw01.jpg'),
