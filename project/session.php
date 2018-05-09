@@ -7,3 +7,9 @@ function require_login() {
         exit();
     }
 }
+
+$loggedIn = false;
+
+if ( isset($_SESSION['user_id']) ) {
+    $loggedIn = true;
+}

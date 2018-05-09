@@ -1,4 +1,6 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+
 $host = "localhost";
 $user = "cohunter";
 $password = "";

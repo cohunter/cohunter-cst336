@@ -26,6 +26,7 @@ while ( $row = $res->fetch_assoc() ) {
     </style>
 </head>
 <body>
+    <a class="btn btn-primary" href="login.php">Login</a>
     <a class="btn btn-primary" href="search.php">See more pictures</a>
     <?=$imageOutput?>
     
