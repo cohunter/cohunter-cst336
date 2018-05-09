@@ -41,7 +41,7 @@ require_once('database.php');
                     filterDate: filterDate,
                     sort:       sort
                 }).done(function(data) {
-                     alert(2);
+                    // alert(2);
                     
                     var imageContainer = $('.image-container');
 
@@ -64,7 +64,7 @@ require_once('database.php');
                 });
             });
             
-            //$('#submitBtn').click();
+            $('#submitBtn').click();
         });
     </script>
 </head>

@@ -14,9 +14,22 @@ if ( isset($_GET['sort']) && $_GET['sort'] == 'random' ) {
     $sort = 'added';
 }
 
-$query = $db->prepare("SELECT image_id, user_id, url FROM images JOIN users ON users.id = images.user_id WHERE username LIKE ? ORDER BY $sort");
-//echo $db->get_warnings();
-$query->bind_param('s', $username);
+$query = "SELECT image_id, user_id, url FROM images JOIN users ON users.id = images.user_id WHERE username LIKE ? ORDER BY $sort";
+$tag = false;
+
+if ( isset($_GET['tag']) && !empty($_GET['tag']) ) {
+    $tag = true;
+    $query = "SELECT images.image_id, user_id, url FROM images JOIN users ON users.id = images.user_id JOIN images_tags ON images.image_id = images_tags.image_id WHERE username LIKE ? AND tag = ? ORDER BY $sort";
+}
+
+$query = $db->prepare($query);
+
+if ( $tag ) {
+    $query->bind_param('ss', $username, $_GET['tag']);
+} else {
+    $query->bind_param('s', $username);
+}
+
 $query->execute();
 $res = $query->get_result();
 
