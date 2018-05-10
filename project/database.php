@@ -8,7 +8,7 @@ $database = "finalproject";
 
 $env = getenv("CLEARDB_DATABASE_URL");
 if ( !empty($env) ) {
-    $url = parse_url();
+    $url = parse_url(base64_decode("bXlzcWw6Ly9iYWRmOGIyOWYxMTY1Mjo2YWZlYzJmM0B1cy1jZGJyLWlyb24tZWFzdC0wNC5jbGVhcmRiLm5ldC9oZXJva3VfNzZjNjU4OTQyNzA5Y2FlP3JlY29ubmVjdD10cnVl"));
     
     $host = $url["host"];
     $user = $url["user"];
