@@ -1,6 +1,7 @@
-DROP DATABASE finalproject;
-CREATE database finalproject;
-use finalproject;
+use heroku_76c658942709cae;
+drop table if exists images_tags;
+drop table if exists images;
+drop table if exists users;
 
 CREATE TABLE users (
   `id` int AUTO_INCREMENT,
@@ -28,7 +29,7 @@ CREATE TABLE images_tags (
   FOREIGN KEY (`image_id`) REFERENCES images(`image_id`) ON DELETE CASCADE
   );
   
-INSERT INTO users (username, password) VALUES ('sampleuser', '$2y$10$i4Lh8QIqYiYmm0SFSGmpW.UqTuv.N0aD3BzcL7rkNpqZzBscPSqyO');
+INSERT INTO users (id, username, password) VALUES (1, 'sampleuser', '$2y$10$i4Lh8QIqYiYmm0SFSGmpW.UqTuv.N0aD3BzcL7rkNpqZzBscPSqyO');
 INSERT INTO users (username, password, is_admin) VALUES ('sampleadmin', '$2y$10$EpNc4VHcUr3Saz0FDgYfZONW2CcVSlUWSE7P.fvO71BS26oOVjZzW', 1),
 	('admin', '$2y$10$YrA3BzJz8MSqFgdcMx2le.ofKduDnbTjexfnrqcXzoWBdRLqSHYhi', 1);
 INSERT INTO images (user_id, url) VALUES (1, 'https://i.imgur.com/rMoibS7.jpg'), (1, 'https://i.redd.it/pak83csz0uw01.jpg'),
